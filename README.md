@@ -40,7 +40,11 @@ sudo mv mermaid-ascii /usr/local/bin/
    (add-to-list 'load-path "/path/to/ob-mermaid-ascii")
    (require 'ob-mermaid-ascii)
    ```
-3. Enable mermaid in Org Babel (if not auto-enabled):
+3. With **Doom Emacs** (and other setups that lazy-load Babel): no further
+   config is needed. `org-babel-execute:mermaid` is autoloaded; the package
+   loads when you run a mermaid src block.
+4. With vanilla Emacs or if Babel does not lazy-load: enable mermaid in Org
+   Babel if needed:
    ```elisp
    (org-babel-do-load-languages
     'org-babel-load-languages
@@ -48,6 +52,20 @@ sudo mv mermaid-ascii /usr/local/bin/
    ```
 
 ### use-package
+
+With **Doom Emacs** or lazy-loaded Babel, install the package and optionally
+set the command; do **not** use `org-babel-do-load-languages` for mermaid:
+
+```elisp
+(use-package ob-mermaid-ascii
+  :ensure nil
+  :load-path "path/to/ob-mermaid-ascii"
+  :after org
+  :config
+  (setq org-babel-mermaid-ascii-command "mermaid-ascii"))
+```
+
+If your setup does not lazy-load Babel, add mermaid to loaded languages:
 
 ```elisp
 (use-package ob-mermaid-ascii

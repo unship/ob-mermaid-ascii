@@ -75,6 +75,7 @@ Can be the binary name if on PATH, or full path."
 (defvar org-babel-tangle-lang-exts)
 (add-to-list 'org-babel-tangle-lang-exts '("mermaid" . "mermaid"))
 
+;;;###autoload
 (defun org-babel-execute:mermaid (body params)
   "Execute Mermaid BODY with org-babel, rendering as ASCII.
 Uses mermaid-ascii (https://github.com/AlexanderGrooff/mermaid-ascii).
